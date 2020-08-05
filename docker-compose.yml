@@ -1,0 +1,19 @@
+version: '3'
+volumes:
+ mysqldb:
+services:
+ mysql:
+  container_name: mysql
+  image: mariadb
+  restart: always
+  ports:
+   - 3306:3306
+  volumes:
+      - mysqldb:/var/lib/mysql
+      #- ./mycustom.cnf:/etc/mysql/conf.d/custom.cnf
+      #- ./dump:/docker-entrypoint-initdb.d
+      - ./backups:/var/backups
+  environment:
+   MYSQL_ROOT_PASSWORD: secret
+
+
