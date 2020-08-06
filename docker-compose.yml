@@ -11,8 +11,8 @@ services:
   volumes:
       - mysqldb:/var/lib/mysql
       #- ./mycustom.cnf:/etc/mysql/conf.d/custom.cnf
-      #- ./dump:/docker-entrypoint-initdb.d
-      - ./backups:/var/backups
+      - ./dump:/docker-entrypoint-initdb.d
+      #- ./backups:/var/backups
   environment:
    MYSQL_ROOT_PASSWORD: secret
 

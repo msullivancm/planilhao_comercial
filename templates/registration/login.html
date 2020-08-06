@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block title %} Pagina de login {% endblock %}
+
+{% block main %}
+
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+            <div class="col-sm">
+              <br>
+            </div>
+            <div class="col-sm">
+              <button type="submit" class="btn btn-secondary">Autenticação por reconhecimento facial</button>
+            </div>
+          </div>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+      <div class="alert alert-primary" role="alert">
+        <span class="text-muted">MacIdEduca</span>
+      </div>
+    </footer>
+{% endblock %}

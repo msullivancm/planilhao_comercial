@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %} Seja bem vindo {% endblock %}
+
+{% block main %}
+
+    <div class="row">
+        <div class="col">
+
+        </div>
+        <div class="col">
+            <h1 class="home">Seja bem vindo</h1>
+            <br>
+            <li>
+                <lu>
+                    <a href="#">Consultar Especificação Técnica de Equipamento</a>
+                </lu>
+            </li>
+            <li>
+                <lu>
+                    <a href="admin/">Administração do Sistema</a>
+                </lu>
+            </li>
+        </div>
+        <div class="col">
+            {% if user.is_authenticated %}
+                <p>Olá {{user.username }}</p>
+                <a href="{% url 'logout' %}" class="btn btn-primary">Sair</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary">Entrar</a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block footer %}
+    <footer class="footer">
+      <div class="alert alert-primary" role="alert">
+        <span class="text-muted">Planilhão do Comercial</span>
+      </div>
+    </footer>
+{% endblock %}
