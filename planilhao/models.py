@@ -1,32 +1,12 @@
 from django.db import models
 
 # Create your models here.
-""" class Usuario(models.Model):
-    id_user = models.AutoField(db_column='ID_USER', primary_key=True)  # Field name made lowercase.
-    nome = models.CharField(db_column='NOME', max_length=200)  # Field name made lowercase.
-    usuario = models.CharField(db_column='USUARIO', max_length=50)  # Field name made lowercase.
-    senha = models.CharField(db_column='SENHA', max_length=100)  # Field name made lowercase.
-    email = models.CharField(db_column='EMAIL', max_length=150, blank=True, null=True)  # Field name made lowercase.
-    ativo = models.CharField(db_column='ATIVO', max_length=1)  # Field name made lowercase.
-    dt_criacao = models.DateField(db_column='DT_CRIACAO')  # Field name made lowercase.
-    id_escola = models.ForeignKey(Escola, on_delete=models.PROTECT, related_name='usuario2escola', db_column='ID_ESCOLA', blank=True, null=True)  # Field name made lowercase.
-    id_distrito = models.ForeignKey(Distrito, on_delete=models.PROTECT, 
-        related_name='usuario2distrito', db_column='ID_DISTRITO', blank=True, null=True)  # Field name made lowercase.
-
-    def __str__(self):
-        return self.usuario
-
-    class Meta:
-        managed = False
-        db_table = 'usuario'
-        unique_together = (('nome', 'id_escola'),)
- """
 class Dispositivo(models.Model):
     class Meta:
         abstract = True
     fabricante = models.CharField(max_length=40)#
     modelo = models.CharField(max_length=40)#
-    processador = models.AutoField(primary_key=True)#Processador 
+    processador = models.CharField(max_length=40)#Processador 
     memoria_minima = models.CharField(max_length=40)#Memória mínima / máxima
     disco_rigido = models.CharField(max_length=40)#Disco Rígido 
     interface_padrao = models.CharField(max_length=40)#Interface Padrão
@@ -37,7 +17,7 @@ class Dispositivo(models.Model):
     catalogo = models.FileField(upload_to='catalogos/', default = 'catalogos/None/no-img.jpg')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
-class Impressoras(models.Model):
+class ImpDisp(Dispositivo):
     class Meta:
         abstract = True
     colorida = models.BooleanField()
@@ -59,12 +39,7 @@ class Impressoras(models.Model):
     gramatura_na_bandeja_principal = models.CharField(max_length=40)#Gramatura na Bandeja Principal 
     gramatura_na_bandeja_multiuso = models.CharField(max_length=40)#Gramatura na Bandeja Multiuso 
     
-class Impressora(Impressoras):
-    id_impressora = models.AutoField(primary_key=True)  # Field name made lowercase.
-    def __str__(self):
-        return self.impressora
-
-class Multifuncional():
+class Multifuncional(ImpDisp):
     id_multifuncional = models.AutoField(primary_key=True)
     velocidade_de_fax = models.CharField(max_length=40)#Velocidade de Fax 
     resolucao = models.CharField(max_length=40)#Resolução 
@@ -72,7 +47,7 @@ class Multifuncional():
     def __str__(self):
         return self.multifuncional 
 
-class Multifuncional_Producao():
+class Multifuncional_Producao(ImpDisp):
     id_multifuncional = models.AutoField(primary_key=True)
     velocidade_de_copia = models.CharField(max_length=40)#Velocidade de Cópia 
     tempo_de_primeira_pagina_copia = models.CharField(max_length=40)#Tempo de Primeira Página 
@@ -89,3 +64,10 @@ class Multifuncional_Producao():
     tipo_da_passagem_do_adf = models.CharField(max_length=40)#Tipo de Passagem do ADF
     def __str__(self):
         return self.multifuncional 
+
+
+class Impressora(ImpDisp):
+    id_impressora = models.AutoField(primary_key=True)  # Field name made lowercase.
+    def __str__(self):
+        return self.impressora
+
