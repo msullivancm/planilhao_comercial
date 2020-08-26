@@ -15,5 +15,6 @@ services:
       #- ./backups:/var/backups
   environment:
    MYSQL_ROOT_PASSWORD: secret
-
-
+   MYSQL_DATABASE: planilhao
+   MYSQL_USER: admin
+   MYSQL_PASSWORD: Dsf897df86sd8f768df
