@@ -44,6 +44,10 @@ class Multifuncional(ImpDisp):
     velocidade_de_fax = models.CharField(max_length=200)#Velocidade de Fax 
     resolucao = models.CharField(max_length=200)#Resolução 
     memoria_de_fax = models.CharField(max_length=200)#Memória de Fax 
+    capacidade_de_folhas_no_adf = models.CharField(max_length=200)
+    bandeja_de_entrada_de_papel = models.CharField(max_length=200)
+    capacidade_maxima_de_bandejas_opcional = models.CharField(max_length=200)
+    bandeja_multiuso = models.CharField(max_length=200)
     def __str__(self):
         return self.multifuncional 
 
