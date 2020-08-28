@@ -65,7 +65,6 @@ class Multifuncional(ImpDisp):
 class Multifuncional_Producao(ImpDisp):
     id_multifuncional = models.AutoField(primary_key=True)
     velocidade_de_copia = models.TextField(blank=True)#Velocidade de Cópia 
-    tempo_de_primeira_pagina_copia = models.TextField(blank=True)#Tempo de Primeira Página 
     resolucao_de_copia = models.TextField(blank=True)#Resolução de cópia 
     ampliacao_e_reducao = models.TextField(blank=True)#Ampliação e Redução 
     copias_multiplas = models.TextField(blank=True)#Cópias Múltiplas 
@@ -77,6 +76,7 @@ class Multifuncional_Producao(ImpDisp):
     tamanho_do_vidro = models.TextField(blank=True)#Tamanho do Vidro 
     tamanho_do_adf = models.TextField(blank=True)#Tamanho do ADF 
     tipo_da_passagem_do_adf = models.TextField(blank=True)#Tipo de Passagem do ADF
+    capacidade_de_folhas_no_adf = models.TextField(blank=True)
     def __str__(self):
         return self.modelo 
 
